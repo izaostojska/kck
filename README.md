@@ -1,6 +1,6 @@
-# requirements
+requirements:
 pytimedinput
 colorama
 
-#start
+to start:
 python repository/Main.py
