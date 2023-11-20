@@ -3,4 +3,4 @@ pytimedinput
 colorama
 
 to start:
-python repository/Main.py
+python repository\Main.py
