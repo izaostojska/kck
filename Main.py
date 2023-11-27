@@ -158,13 +158,34 @@ def exit_game():
 
 
 def show_menu(stdscr):
+    ascii_art = """
+             ,-"     "-.
+            / o       o \\
+           /   \\     /   \\
+          /     )-"-(     \\
+         /     ( 6 6 )     \\
+        /       \\ " /       \\
+       /         )=(         \\
+      /   o   .--"-"--.   o   \\
+     /    I  /  -   -  \\  I    \\
+ .--(    (_}y/\\       /\\y{_)    )--.
+(    ".___l\\/__/\\_____/__\\/l___,"    )
+ \\                                 /
+  "-._      o O o O o O o      _,-"
+      `--Y--.___________.--Y--'
+         |==.___________.==| 
+         `==.___________.==' 
+"""
 
     stdscr.clear()
-    stdscr.addstr(0, 0, "MENU:", curses.A_BOLD)
-    stdscr.addstr(1, 0, "1. Start New Game")
-    stdscr.addstr(2, 0, "2. See Top Scores")
-    stdscr.addstr(3, 0, "3. Exit")
-    stdscr.addstr(4, 0, "Enter your choice (1, 2, or 3): ")
+    for i, line in enumerate(ascii_art.split('\n')):
+        stdscr.addstr(i, 0, line)
+
+    stdscr.addstr(len(ascii_art.split('\n')) + 1, 0, "MENU:", curses.A_BOLD)
+    stdscr.addstr(len(ascii_art.split('\n')) + 2, 0, "1. Start New Game")
+    stdscr.addstr(len(ascii_art.split('\n')) + 3, 0, "2. See Top Scores")
+    stdscr.addstr(len(ascii_art.split('\n')) + 4, 0, "3. Exit")
+    stdscr.addstr(len(ascii_art.split('\n')) + 5, 0, "Enter your choice (1, 2, or 3): ")
     stdscr.refresh()
     choice = stdscr.getch()
     if choice == ord('2'):
@@ -174,8 +195,6 @@ def show_menu(stdscr):
 
     return chr(choice) if choice in [ord('1'), ord('2'), ord('3')] else None
 
-
-init(autoreset=True)
 
 curses.wrapper(lambda stdscr: show_menu(stdscr))
 while True:
